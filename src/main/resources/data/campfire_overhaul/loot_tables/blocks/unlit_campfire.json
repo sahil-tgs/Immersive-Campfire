@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:block",
+    "pools": [
+        {"rolls": 1, "entries": [{"type": "minecraft:item", "name": "campfire_overhaul:firewood", "functions": [{"function": "minecraft:set_count", "count": 4}]}], "conditions": [{"condition": "minecraft:survives_explosion"}]},
+        {"rolls": 1, "entries": [{"type": "minecraft:item", "name": "minecraft:coal"}], "conditions": [{"condition": "minecraft:survives_explosion"}]}
+    ]
+}
+

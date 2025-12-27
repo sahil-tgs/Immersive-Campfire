@@ -1,0 +1,9 @@
+{
+    "variants": {
+        "count=1": {"model": "campfire_overhaul:block/firewood_1"},
+        "count=2": {"model": "campfire_overhaul:block/firewood_2"},
+        "count=3": {"model": "campfire_overhaul:block/firewood_3"},
+        "count=4": {"model": "campfire_overhaul:block/firewood_4"}
+    }
+}
+

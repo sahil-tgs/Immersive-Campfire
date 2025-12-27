@@ -23,12 +23,9 @@ import net.minecraft.world.World;
 
 public class StumpBlock extends Block {
     
-    // Property to track if a log is placed on the stump
     public static final BooleanProperty HAS_LOG = BooleanProperty.of("has_log");
     
-    // Stump shape - shorter than a full block
     private static final VoxelShape SHAPE = VoxelShapes.cuboid(0.0, 0.0, 0.0, 1.0, 0.625, 1.0);
-    // Stump with log shape - taller
     private static final VoxelShape SHAPE_WITH_LOG = VoxelShapes.cuboid(0.0, 0.0, 0.0, 1.0, 1.0, 1.0);
     
     public StumpBlock(Settings settings) {
@@ -52,29 +49,19 @@ public class StumpBlock extends Block {
         boolean hasLog = state.get(HAS_LOG);
         
         if (!hasLog) {
-            // No log on stump - check if player is holding a log to place it
             if (heldItem.isIn(ItemTags.LOGS)) {
                 if (!world.isClient) {
-                    // Place the log on the stump
                     world.setBlockState(pos, state.with(HAS_LOG, true));
-                    
-                    // Consume one log from player's hand
                     if (!player.getAbilities().creativeMode) {
                         heldItem.decrement(1);
                     }
-                    
-                    // Play wood placement sound
                     world.playSound(null, pos, SoundEvents.BLOCK_WOOD_PLACE, SoundCategory.BLOCKS, 1.0f, 1.0f);
                 }
                 return ActionResult.success(world.isClient);
             }
         } else {
-            // Log is on stump - chop it into firewood!
             if (!world.isClient) {
-                // Remove the log from stump
                 world.setBlockState(pos, state.with(HAS_LOG, false));
-                
-                // Drop 4 firewood
                 for (int i = 0; i < 4; i++) {
                     ItemStack firewood = new ItemStack(ModItems.FIREWOOD);
                     ItemEntity itemEntity = new ItemEntity(world, 
@@ -89,12 +76,8 @@ public class StumpBlock extends Block {
                     );
                     world.spawnEntity(itemEntity);
                 }
-                
-                // Play chopping sound
                 world.playSound(null, pos, SoundEvents.BLOCK_WOOD_BREAK, SoundCategory.BLOCKS, 1.0f, 0.8f);
             }
-            
-            // Swing the player's arm
             player.swingHand(hand, true);
             return ActionResult.success(world.isClient);
         }
@@ -102,4 +85,3 @@ public class StumpBlock extends Block {
         return ActionResult.PASS;
     }
 }
-

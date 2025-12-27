@@ -23,32 +23,23 @@ import net.minecraft.world.World;
 
 public class FirewoodBlock extends Block {
     
-    // Number of firewood pieces stacked (1-4)
     public static final IntProperty COUNT = IntProperty.of("count", 1, 4);
     
-    // Shapes matching exact campfire log dimensions (4 pixels tall, 4 wide, 16 long)
-    // 1 log: single horizontal log in center
     private static final VoxelShape SHAPE_1 = VoxelShapes.cuboid(0.375, 0.0, 0.0, 0.625, 0.25, 1.0);
-    
-    // 2 logs: two parallel horizontal logs
     private static final VoxelShape SHAPE_2 = VoxelShapes.union(
-            VoxelShapes.cuboid(0.0625, 0.0, 0.0, 0.3125, 0.25, 1.0),  // Left log
-            VoxelShapes.cuboid(0.6875, 0.0, 0.0, 0.9375, 0.25, 1.0)   // Right log
+            VoxelShapes.cuboid(0.0625, 0.0, 0.0, 0.3125, 0.25, 1.0),
+            VoxelShapes.cuboid(0.6875, 0.0, 0.0, 0.9375, 0.25, 1.0)
     );
-    
-    // 3 logs: two bottom + one on top perpendicular
     private static final VoxelShape SHAPE_3 = VoxelShapes.union(
-            VoxelShapes.cuboid(0.0625, 0.0, 0.0, 0.3125, 0.25, 1.0),  // Bottom left
-            VoxelShapes.cuboid(0.6875, 0.0, 0.0, 0.9375, 0.25, 1.0),  // Bottom right
-            VoxelShapes.cuboid(0.0, 0.1875, 0.6875, 1.0, 0.4375, 0.9375) // Top back
+            VoxelShapes.cuboid(0.0625, 0.0, 0.0, 0.3125, 0.25, 1.0),
+            VoxelShapes.cuboid(0.6875, 0.0, 0.0, 0.9375, 0.25, 1.0),
+            VoxelShapes.cuboid(0.0, 0.1875, 0.6875, 1.0, 0.4375, 0.9375)
     );
-    
-    // 4 logs: exactly like campfire - two bottom + two top crossing
     private static final VoxelShape SHAPE_4 = VoxelShapes.union(
-            VoxelShapes.cuboid(0.0625, 0.0, 0.0, 0.3125, 0.25, 1.0),  // Bottom left
-            VoxelShapes.cuboid(0.6875, 0.0, 0.0, 0.9375, 0.25, 1.0),  // Bottom right
-            VoxelShapes.cuboid(0.0, 0.1875, 0.6875, 1.0, 0.4375, 0.9375), // Top back
-            VoxelShapes.cuboid(0.0, 0.1875, 0.0625, 1.0, 0.4375, 0.3125)  // Top front
+            VoxelShapes.cuboid(0.0625, 0.0, 0.0, 0.3125, 0.25, 1.0),
+            VoxelShapes.cuboid(0.6875, 0.0, 0.0, 0.9375, 0.25, 1.0),
+            VoxelShapes.cuboid(0.0, 0.1875, 0.6875, 1.0, 0.4375, 0.9375),
+            VoxelShapes.cuboid(0.0, 0.1875, 0.0625, 1.0, 0.4375, 0.3125)
     );
     
     public FirewoodBlock(Settings settings) {
@@ -77,37 +68,25 @@ public class FirewoodBlock extends Block {
         ItemStack heldItem = player.getStackInHand(hand);
         int count = state.get(COUNT);
         
-        // Check if stack is full (4) and player has coal/charcoal
         if (count == 4) {
             if (heldItem.isOf(Items.COAL) || heldItem.isOf(Items.CHARCOAL)) {
                 if (!world.isClient) {
-                    // Transform into unlit campfire
                     world.setBlockState(pos, ModBlocks.UNLIT_CAMPFIRE.getDefaultState());
-                    
-                    // Consume one coal
                     if (!player.getAbilities().creativeMode) {
                         heldItem.decrement(1);
                     }
-                    
-                    // Play placement sound
                     world.playSound(null, pos, SoundEvents.BLOCK_WOOD_PLACE, SoundCategory.BLOCKS, 1.0f, 1.2f);
                 }
                 return ActionResult.success(world.isClient);
             }
         }
         
-        // Check if player is adding more firewood
         if (count < 4 && heldItem.isOf(ModItems.FIREWOOD)) {
             if (!world.isClient) {
-                // Increase stack count
                 world.setBlockState(pos, state.with(COUNT, count + 1));
-                
-                // Consume one firewood
                 if (!player.getAbilities().creativeMode) {
                     heldItem.decrement(1);
                 }
-                
-                // Play wood placement sound
                 world.playSound(null, pos, SoundEvents.BLOCK_WOOD_PLACE, SoundCategory.BLOCKS, 1.0f, 1.0f);
             }
             return ActionResult.success(world.isClient);

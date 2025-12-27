@@ -1,0 +1,9 @@
+{
+    "variants": {
+        "facing=north": {"model": "campfire_overhaul:block/unlit_campfire"},
+        "facing=south": {"model": "campfire_overhaul:block/unlit_campfire", "y": 180},
+        "facing=west": {"model": "campfire_overhaul:block/unlit_campfire", "y": 270},
+        "facing=east": {"model": "campfire_overhaul:block/unlit_campfire", "y": 90}
+    }
+}
+

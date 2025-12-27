@@ -1,5 +1,5 @@
 {
-    "parent": "immersive_campfire:block/firewood_1",
+    "parent": "campfire_overhaul:block/firewood_1",
     "display": {
         "gui": {
             "rotation": [30, 225, 0],
@@ -38,3 +38,4 @@
         }
     }
 }
+

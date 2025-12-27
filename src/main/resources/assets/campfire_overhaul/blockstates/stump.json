@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "has_log=false": {"model": "campfire_overhaul:block/stump"},
+        "has_log=true": {"model": "campfire_overhaul:block/stump_with_log"}
+    }
+}
+

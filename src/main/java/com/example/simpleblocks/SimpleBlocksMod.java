@@ -5,18 +5,17 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class SimpleBlocksMod implements ModInitializer {
-    public static final String MOD_ID = "immersive_campfire";
+    public static final String MOD_ID = "campfire_overhaul";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
     @Override
     public void onInitialize() {
-        LOGGER.info("Initializing Immersive Campfire Mod!");
+        LOGGER.info("Initializing Campfire Overhaul Mod!");
         
-        // Register all mod content
         ModBlocks.registerBlocks();
         ModItems.registerItems();
         ModItemGroups.registerItemGroups();
         
-        LOGGER.info("Immersive Campfire Mod initialized successfully!");
+        LOGGER.info("Campfire Overhaul Mod initialized successfully!");
     }
 }
