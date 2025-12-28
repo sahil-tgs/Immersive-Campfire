@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {"tag": "minecraft:planks"},
+        {"item": "minecraft:stick"}
+    ],
+    "result": {
+        "item": "campfire_overhaul:hand_drill",
+        "count": 1
+    }
+}
+

@@ -16,6 +16,11 @@ public class ModItemGroups {
             content.add(ModItems.FIREWOOD);
         });
         
+        // Hand Drill goes in Tools tab (it's a primitive fire-starting tool)
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS).register(content -> {
+            content.add(ModItems.HAND_DRILL);
+        });
+        
         SimpleBlocksMod.LOGGER.info("Registered item groups for " + SimpleBlocksMod.MOD_ID);
     }
 }

@@ -9,6 +9,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BowItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import com.example.simpleblocks.ModItems;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
@@ -133,8 +134,8 @@ public class UnlitCampfireBlock extends Block {
                     IgnitionMethod.FLINT_SPARK);
         }
         
-        // Hand Drill (Sticks) - Requires at least 1 stick
-        if (heldItem.isOf(Items.STICK)) {
+        // Hand Drill - Primitive fire-starting tool (crafted from plank + stick)
+        if (heldItem.isOf(ModItems.HAND_DRILL)) {
             return attemptPrimitiveIgnition(world, pos, state, player, hand, heldItem, 
                     IgnitionMethod.HAND_DRILL);
         }
@@ -230,8 +231,8 @@ public class UnlitCampfireBlock extends Block {
         
         switch (method) {
             case HAND_DRILL -> {
-                // Consumes 1 stick per attempt (DEV: was 2 in production)
-                heldItem.decrement(1);
+                // Hand Drill takes 1 durability damage per attempt
+                heldItem.damage(1, player, (p) -> p.sendToolBreakStatus(hand));
             }
             case FLINT_SPARK -> {
                 // 30% chance to consume flint on each attempt

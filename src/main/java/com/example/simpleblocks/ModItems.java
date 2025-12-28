@@ -1,6 +1,7 @@
 package com.example.simpleblocks;
 
 import com.example.simpleblocks.item.FirewoodItem;
+import com.example.simpleblocks.item.HandDrillItem;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.item.Item;
@@ -12,6 +13,10 @@ public class ModItems {
     
     public static final Item FIREWOOD = registerItem("firewood",
             new FirewoodItem(new FabricItemSettings()));
+    
+    // Hand Drill - primitive fire-starting tool (plank + stick)
+    public static final Item HAND_DRILL = registerItem("hand_drill",
+            new HandDrillItem(new FabricItemSettings()));
     
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, new Identifier(SimpleBlocksMod.MOD_ID, name), item);
