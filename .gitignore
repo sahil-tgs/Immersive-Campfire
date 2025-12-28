@@ -2,6 +2,7 @@
 .gradle/
 build/
 out/
+bin/
 
 # IDE
 .idea/
@@ -33,3 +34,7 @@ desktop.ini
 textures/
 better-campfire-model/
 ashlesscampfire/
+
+# Temp/personal files
+starterPrompt.md
+ChatGPT*.png
