@@ -19,10 +19,39 @@ A Fabric mod for Minecraft 1.20.4 that makes campfire creation more immersive an
 **Step-by-step World Placement:**
 1. Stack 4 firewood on the ground
 2. Right-click with ANY fuel source (coal, charcoal, planks, sticks, etc.)
-3. Use Flint & Steel to light it → 🔥 Campfire!
+3. Light it using one of the primitive methods below → 🔥 Campfire!
+
+### 🧯 Primitive Fire-Starting Methods
+
+Multiple ways to light your campfire, from desperate survival to reliable tools:
+
+| Method | Item Required | Difficulty | Notes |
+|--------|---------------|------------|-------|
+| **Hand Drill** | Sticks | Hardest | Rub sticks together - primitive survival |
+| **Flint Sparking** | Flint | Medium | Strike flint to create sparks |
+| **Bow Drill** | Any Bow | Easier | Use bow friction - more reliable |
+| **Flint & Steel** | Flint & Steel | Instant ✨ | The goal - 100% reliable ignition |
+| **Fire Charge** | Fire Charge | Instant | Consumed on use |
+
+**Progression Feel:**
+```
+[Desperate] Sticks → Unreliable, tedious
+     ↓
+[Basic] Flint → Better sparks, still chance-based
+     ↓
+[Improved] Bow Drill → Good success rate
+     ↓
+[Reliable] Flint & Steel → 100% success! ✨
+```
+
+Each primitive method shows visual feedback:
+- **Smoke particles** during friction attempts
+- **Spark particles** when striking flint
+- **Ember buildup** as you get closer to success
+- **Flame burst** on successful ignition
 
 ### ⚡ Fuel Flexibility
-- Accept **any furnace fuel** to ignite firewood stacks
+- Accept **any furnace fuel** to prepare firewood stacks
 - Works with: Coal, Charcoal, Wood Planks, Sticks, Blaze Rods, etc.
 - Lava Bucket excluded for safety
 
@@ -39,7 +68,7 @@ A Fabric mod for Minecraft 1.20.4 that makes campfire creation more immersive an
 
 [4 Firewood] + [Any Fuel] ──right-click──> [Unlit Campfire]
 
-[Unlit Campfire] + [Flint & Steel] ──right-click──> 🔥 Campfire!
+[Unlit Campfire] + [Sticks/Flint/Bow/Flint&Steel] ──right-click──> 🔥 Campfire!
 ```
 
 ## Installation
